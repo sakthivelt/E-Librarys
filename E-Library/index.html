@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" />
     <title>LogIn & SignIn E-Library</title>
@@ -46,10 +47,14 @@
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="Password" id="user_password" required/>
                     </div>
-                    <div class="login_btn">
+                    <div class="login_btn" style="padding-left: 20px;">
                         <input type="button" value="Login" class="btn solid" id="userLogin_btn" />
                         <input type="button" value="Admin Login" class="btn solid" id="adminLogin_btn" />
+                        <div class="loader-container">
+                            <div class="loader" id="progress2" hidden></div>
+                        </div>
                     </div>
+                    <p id="messages2" style="color: #5995fd;;" hidden>account created succesfully !</p>
                 </form>
                 <form action="#" class="sign-up-form">
                     <h2 class="title">Sign up</h2>
@@ -61,6 +66,7 @@
                         <i class="fas fa-envelope"></i>
                         <input type="text" placeholder="Email" id="new_email" required />
                     </div>
+
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="New Password" id="new_password" required />
@@ -71,11 +77,16 @@
                         <input type="password" placeholder="Confirm Password" id="confirm_password" required />
 
                     </div>
+                    <div>
+                        <input type="button" class="btn" value="Sign up" id="signup_btn" />
+                        <div class="loader-container" style="display: inline-block;">
+                            <div class="loader" id="progress1" hidden></div>
+                        </div>
+                    </div>
 
-                    <input type="button" class="btn" value="Sign up" id="signup_btn" />
-
+                    <p id="messages1" style="color: #5995fd;;" hidden>account created succesfully !</p>
                 </form>
-                <p id="messages" hidden>account created succesfully !</p>
+
             </div>
         </div>
 
