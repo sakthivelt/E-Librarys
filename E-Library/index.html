@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" />
     <title>LogIn & SignIn E-Library</title>
@@ -37,19 +40,31 @@
         <div class="forms-container">
             <div class="signin-signup">
                 <form action="#" class="sign-in-form">
-                    <h2 class="title">Sign in</h2>
+                    <h2 class="title forgot_title">Sign in</h2>
+                    <h2 class="title forgot_title2" style="display: none;">Reset Password</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
                         <input type="email" placeholder="Email ID" id="user_email" required/>
                     </div>
-                    <div class="input-field">
+                    <div class="input-field forgot_input-field">
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="Password" id="user_password" required/>
                     </div>
-                    <div class="login_btn">
-                        <input type="button" value="Login" class="btn solid" id="userLogin_btn" />
-                        <input type="button" value="Admin Login" class="btn solid" id="adminLogin_btn" />
+                    <div class="login_btn" style="padding-left: 20px; display: inline-flex;">
+                        <input type="button" value="Login" class="btn solid hide_btn" id="userLogin_btn" />
+                        <input type="button" value="Reset" class="btn solid" id="reset_btn" style="display: none;" />
+                        <div class="loader-container">
+                            <div class="loader" id="progress2" hidden></div>
+                        </div>
                     </div>
+                    <div class="forgot_btn_hide">
+                        <input type="button" value=" Forgot Password ?" class="btn solid " id="forgot_btn" style="background-color:transparent;color:#5995fd; margin-right: 30px; " />
+                    </div>
+                    <div class="login_page_btn_hide" style="display: none;">
+                        <input type="button" value=" <-  Go to login page " class="btn solid" id="login_page_btn" style="background-color:transparent;color:#5995fd; margin-right: 30px; " />
+                    </div>
+
+                    <p id="messages2" style="color: #5995fd;" hidden>account created succesfully !</p>
                 </form>
                 <form action="#" class="sign-up-form">
                     <h2 class="title">Sign up</h2>
@@ -61,6 +76,7 @@
                         <i class="fas fa-envelope"></i>
                         <input type="text" placeholder="Email" id="new_email" required />
                     </div>
+
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="New Password" id="new_password" required />
@@ -71,19 +87,24 @@
                         <input type="password" placeholder="Confirm Password" id="confirm_password" required />
 
                     </div>
+                    <div>
+                        <input type="button" class="btn" value="Sign up" id="signup_btn" />
+                        <div class="loader-container" style="display: inline-block;">
+                            <div class="loader" id="progress1" hidden></div>
+                        </div>
+                    </div>
 
-                    <input type="button" class="btn" value="Sign up" id="signup_btn" />
-
+                    <p id="messages1" style="color: #5995fd;;" hidden>account created succesfully !</p>
                 </form>
-                <p id="messages" hidden>account created succesfully !</p>
+
             </div>
         </div>
 
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content">
-                    <h3>Welcome To <span style="font-size: 40px;">E-Library
-                    </span></h3>
+                    <h3 style="margin-top: 0px;">Welcome To</h3>
+                    <span style="font-size: 40px;">E-Library</span>
                     <p>
                         You are a New user
                     </p>
@@ -95,10 +116,8 @@
             </div>
             <div class="panel right-panel">
                 <div class="content">
-                    <h3>Welcome To
-                        <span style="font-size: 40px;">E-Library
-                            </span>
-                    </h3>
+                    <h3 style="margin-top: 0px;">Welcome To</h3>
+                    <span style="font-size: 40px;">E-Library</span>
                     <p>
                         You have a Already account
                     </p>
